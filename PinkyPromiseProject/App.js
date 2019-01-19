@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import { Image, Platform, Text, StatusBar,StyleSheet, View } from 'react-native';
+import { Button, Image, Platform, Text, StatusBar,StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import t from 'tcomb-form-native';
@@ -20,7 +20,8 @@ export default class App extends Component {
     Function used to handle the data submitted when making a profile
   */
   handleSubmit = () => {
-    // do the things  
+    const value = this._form.getValue(); // use that ref to get the form value
+    console.log('value: ', value);
   }
 
   //  Rendering the App (How it looks like on your phone)
@@ -31,9 +32,13 @@ export default class App extends Component {
     };
     return (
       <View style= {styles.container}>
-      <Form type={User} />
       <Image source={pic} style={{width: 253, height: 160}}/>
         <Text style = {styles.welcome}>Pinky Promise!</Text>
+        <Form type={User} />
+        <Button
+          title="Sign Up!"
+          onPress={this.handleSubmit}
+        />
       </View>
     );
   }
@@ -48,7 +53,7 @@ These styles are used to customize the layout of our text
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    padding: 20,
+    padding: 60,
     backgroundColor: "#FFB6C1",
   },
   bigblue: {
