@@ -13,10 +13,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
   },
-  bigpink: {
+  welcome: {
     color: 'pink',
     fontWeight: 'bold',
     fontSize: 30,
+    fontFamily: "MarkerFelt-Wide",
+    textAlign: "center",
+    margin: 10
   },
   red: {
     color: 'red',
@@ -30,8 +33,8 @@ export default class App extends Component {
     };
     return (
       <View>
-        <Image source={pic} style={{width: 193, height: 110}}/>
-        <Text style = {styles.bigpink}>Pinky Promise!</Text>
+        <Image source={pic} style={{width: 253, height: 160}}/>
+        <Text style = {styles.welcome}>Pinky Promise!</Text>
       </View>
     );
   }
