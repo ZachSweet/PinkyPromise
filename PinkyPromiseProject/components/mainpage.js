@@ -7,7 +7,7 @@ import { AsyncStorage } from "react-native";
 
 export class MainPageScreen extends React.Component {
     static navigationOptions = {
-      title: 'Welcome to Pinky Promise!',
+      title: 'Main Page',
     };
     render() {
       const {navigate} = this.props.navigation;
@@ -15,10 +15,31 @@ export class MainPageScreen extends React.Component {
         uri: 'https://i.imgur.com/pHSU9El.jpg'
       };
       return (
-      <View style= {styles.container}>
-      <Image source={pic} style={{width: 253, height: 160}}/>
-          
-      </View>
+        <View style= {styles.container}>
+        <Image source={pic} style={{width: 253, height: 160}}/>
+          <Button
+            title="View/Edit Profile"
+            color= "#FFB6C1"
+            onPress={() => navigate('CreateProfile')}
+            />
+            <Button
+            title="Start Matching"
+            color = "#FFB6C1"
+            //onPress={() => navigate('SignUp')}
+            />
+            <Button
+            title="Talk to Matches"
+            color = "#FFB6C1"
+            //onPress={() => navigate('SignUp')}
+            />
+            <Button
+            title="Unmatch"
+            color = "#FFB6C1"
+            //onPress={() => navigate('SignUp')}
+            />
+    
+            
+        </View>
       
       );
     }
