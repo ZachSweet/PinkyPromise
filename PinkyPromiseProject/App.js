@@ -2,74 +2,22 @@ import React , {Component} from 'react';
 import { Button, Image, Platform, Text, StatusBar,StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
-import t from 'tcomb-form-native';
+import {createStackNavigator} from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { HomeScreen } from './components/home';
+import { LogInScreen } from './components/login';
+import { SignInScreen } from './components/signin';
+import { SignUpScreen } from './components/signup';
+import { CreateProfileScreen } from './components/createprofile';
 
-//  This Form is the variable that we use to instantiate the form
-const Form = t.form.Form;
-
-//  Basic information that we are collecting from the users
-const User = t.struct({
-  email: t.String,
-  username: t.String,
-  password: t.String,
-  terms: t.Boolean
+const FunStack = createStackNavigator({
+  Home: {screen: HomeScreen},
+  LogIn: {screen: LogInScreen},
+  SignIn: {screen: SignInScreen},
+  SignUp: {screen: SignUpScreen},
+  CreateProfile: {screen: CreateProfileScreen},
 });
 
-export default class App extends Component {
-  /*
-    Function used to handle the data submitted when making a profile
-  */
-  handleSubmit = () => {
-    const value = this._form.getValue(); // use that ref to get the form value
-    console.log('value: ', value);
-  }
+const App = createAppContainer(FunStack);
 
-  //  Rendering the App (How it looks like on your phone)
-
-  render() {
-    let pic = {
-      uri: 'https://images.pexels.com/photos/1389098/pexels-photo-1389098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-    };
-    return (
-      <View style= {styles.container}>
-      <Image source={pic} style={{width: 253, height: 160}}/>
-        <Text style = {styles.welcome}>Pinky Promise!</Text>
-        <Form type={User} />
-        <Button
-          title="Sign Up!"
-          onPress={this.handleSubmit}
-        />
-      </View>
-    );
-  }
-}
-
-
-/*
-VISUAL COMPONENT OF CODE
-These styles are used to customize the layout of our text
-*/
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    padding: 60,
-    backgroundColor: "#FFB6C1",
-  },
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  welcome: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontFamily: "MarkerFelt-Wide",
-    textAlign: "center",
-    margin: 10
-  },
-  red: {
-    color: 'red',
-  },
-});
+export default App;
