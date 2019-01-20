@@ -8,6 +8,7 @@ import { HomeScreen } from './components/home';
 import { LogInScreen } from './components/login';
 import { SignInScreen } from './components/signin';
 import { SignUpScreen } from './components/signup';
+import {MainPageScreen} from './components/mainpage';
 import { CreateProfileScreen } from './components/createprofile';
 
 const FunStack = createStackNavigator({
@@ -16,6 +17,7 @@ const FunStack = createStackNavigator({
   SignIn: {screen: SignInScreen},
   SignUp: {screen: SignUpScreen},
   CreateProfile: {screen: CreateProfileScreen},
+  MainPage: {screen: MainPageScreen},
 });
 
 const App = createAppContainer(FunStack);
