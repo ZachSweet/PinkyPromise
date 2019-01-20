@@ -45,8 +45,9 @@ export class SignUpScreen extends React.Component {
       <View style= {styles.container}>
       <Form type={User} />
         <Button
-          title="Sign Up!"
-          onPress={this.handleSubmit}
+          title="Set up your Profile!"
+          onPress={() => navigate('CreateProfile')}
+          //onPress={this.handleSubmit}
         />
       </View>
     );
